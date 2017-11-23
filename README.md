@@ -25,3 +25,13 @@ in accordance with the law and pursue the execution of a fair trial.
 * Regression planner for generating cases
 * Adversary AI
 
+
+# TODO
+
+- [] Develop courtroom scene, ability to enter, exit, and move actors around inside it.
+  - [] Draw a title screen
+  - [] Develop a system for showing scenes
+  - [] Create the courtroom scene
+  - [] Make it possible to go from the title screen to the courtroom scene and back
+  - [] Develop a data format for defining title scenes
+  - [] Extend data format for defining tile scenes
