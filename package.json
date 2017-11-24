@@ -1,0 +1,17 @@
+{
+  "name": "do-process",
+  "version": "0.1.0",
+  "description": "You have the right to refuse input",
+  "author": "Carl Thuringer <carlthuringer@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "elm-webpack-loader": "^4.4.0",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  }
+}
