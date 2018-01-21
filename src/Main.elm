@@ -3,6 +3,7 @@ module Main exposing (..)
 import Html
 import Html.Attributes
 import Html.Events
+import Model exposing (Model, Scene(..))
 
 
 -- View
@@ -79,15 +80,6 @@ view model =
             courtScene model
 
 
-type Scene
-    = TitleScene
-    | CourtScene
-
-
-type alias Model =
-    { scene : Scene }
-
-
 type Msg
     = NoOp
     | ChangeScene Scene
@@ -106,7 +98,7 @@ update msg model =
 main : Program Never Model Msg
 main =
     Html.beginnerProgram
-        { model = { scene = TitleScene }
+        { model = Model.initialModel
         , update = update
         , view = view
         }
