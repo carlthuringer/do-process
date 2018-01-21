@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import Html
 import Html.Attributes
+import Html.Events
 
 
 -- View
@@ -26,7 +27,7 @@ gameWindow content =
         ]
 
 
-titleScene : model -> Html.Html msg
+titleScene : model -> Html.Html Msg
 titleScene model =
     Html.div
         [ Html.Attributes.style
@@ -39,6 +40,15 @@ titleScene model =
                 [ ( "display", "inline-block" ) ]
             ]
             [ Html.text "DO Process" ]
+        , Html.button
+            [ Html.Attributes.style
+                [ ( "display", "block" )
+                , ( "margin", "auto" )
+                ]
+            , Html.Events.onClick (ChangeScene CourtScene)
+            ]
+            [ Html.text "Go to Court" ]
+        , Html.text (toString model)
         ]
         |> gameWindow
 
@@ -50,15 +60,44 @@ courtScene model =
         |> gameWindow
 
 
-view : model -> Html.Html msg
+view : Model -> Html.Html Msg
 view model =
-    titleScene model
+    case model.scene of
+        TitleScene ->
+            titleScene model
+
+        CourtScene ->
+            courtScene model
 
 
-main : Program Never {} msg
+type Scene
+    = TitleScene
+    | CourtScene
+
+
+type alias Model =
+    { scene : Scene }
+
+
+type Msg
+    = NoOp
+    | ChangeScene Scene
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        ChangeScene nextScene ->
+            { model | scene = nextScene }
+
+        NoOp ->
+            model
+
+
+main : Program Never Model Msg
 main =
     Html.beginnerProgram
-        { model = {}
-        , update = (\msg model -> model)
+        { model = { scene = TitleScene }
+        , update = update
         , view = view
         }
