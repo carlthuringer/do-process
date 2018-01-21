@@ -4,6 +4,7 @@ import Html
 import Html.Attributes
 import Html.Events
 import Model exposing (Model, Scene(..))
+import Update exposing (Msg(..))
 
 
 -- View
@@ -80,25 +81,10 @@ view model =
             courtScene model
 
 
-type Msg
-    = NoOp
-    | ChangeScene Scene
-
-
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        ChangeScene nextScene ->
-            { model | scene = nextScene }
-
-        NoOp ->
-            model
-
-
 main : Program Never Model Msg
 main =
     Html.beginnerProgram
         { model = Model.initialModel
-        , update = update
+        , update = Update.update
         , view = view
         }
