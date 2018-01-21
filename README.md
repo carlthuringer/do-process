@@ -30,8 +30,11 @@ in accordance with the law and pursue the execution of a fair trial.
 
 - [] Develop courtroom scene, ability to enter, exit, and move actors around inside it.
   - [x] Draw a title screen
-  - [] Develop a system for showing scenes
-  - [] Create the courtroom scene
-  - [] Make it possible to go from the title screen to the courtroom scene and back
+  - [x] Develop a system for showing scenes
+  - [x] Create the courtroom scene
+  - [x] Make it possible to go from the title screen to the courtroom scene and back
+  - [] Define an Actor
+  - [] Define locations A, B
+  - [] Have the Actor move from A to B at the press of a button
   - [] Develop a data format for defining title scenes
   - [] Extend data format for defining tile scenes

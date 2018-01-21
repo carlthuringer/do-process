@@ -53,10 +53,19 @@ titleScene model =
         |> gameWindow
 
 
-courtScene : model -> Html.Html msg
+courtScene : model -> Html.Html Msg
 courtScene model =
     Html.div []
-        [ Html.text "You are in court" ]
+        [ Html.text "You are in court"
+        , Html.button
+            [ Html.Attributes.style
+                [ ( "display", "block" )
+                , ( "margin", "auto" )
+                ]
+            , Html.Events.onClick (ChangeScene TitleScene)
+            ]
+            [ Html.text "Go to Title" ]
+        ]
         |> gameWindow
 
 
