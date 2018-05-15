@@ -4,7 +4,7 @@ import Html exposing (Html, div, h1, text, button)
 import Html.Attributes as Attributes exposing (style)
 import Html.Events as Events exposing (onClick)
 import Update exposing (Msg(..))
-import Model exposing (Model, Scene(..))
+import Model exposing (Model, Scene(..), Action(..))
 
 
 gameWindow : Html Msg -> Html Msg
@@ -23,7 +23,7 @@ gameWindow content =
         ]
 
 
-titleScene : model -> Html Msg
+titleScene : Model -> Html Msg
 titleScene model =
     div
         [ style
@@ -31,19 +31,41 @@ titleScene model =
             , ( "margin", "auto" )
             ]
         ]
-        [ h1 [ style [ ( "display", "inline-block" ) ] ]
+        [ h1 [ style [ ( "text-align", "center" ) ] ]
             [ text "DO Process" ]
         , button
             [ style
                 [ ( "display", "block" )
                 , ( "margin", "auto" )
                 ]
-            , onClick (ChangeScene CourtScene)
+            , onClick (NextLine model.script)
             ]
-            [ text "Go to Court" ]
-        , text (toString model)
+            [ text "Begin" ]
+        , renderStage model.performance
         ]
-        |> gameWindow
+
+
+
+-- limboScene : Model -> Html Msg
+-- limboScene model =
+--     div [] [renderStage model.performances]
+
+
+renderStage : Action -> Html Msg
+renderStage performance =
+    case performance of
+        Speak { name } phrase ->
+            text (name ++ phrase)
+
+        EmptyStage ->
+            text ""
+
+
+
+-- renderPerformance : Performance -> Html Msg
+-- renderPerformance performance =
+--     case performance of
+--         Speech
 
 
 courtScene : model -> Html Msg
@@ -59,14 +81,13 @@ courtScene model =
             ]
             [ text "Go to Title" ]
         ]
-        |> gameWindow
 
 
 view : Model -> Html Msg
 view model =
     case model.scene of
         TitleScene ->
-            titleScene model
+            titleScene model |> gameWindow
 
         CourtScene ->
-            courtScene model
+            courtScene model |> gameWindow
