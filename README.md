@@ -34,7 +34,11 @@ in accordance with the law and pursue the execution of a fair trial.
   - [x] Create the courtroom scene
   - [x] Make it possible to go from the title screen to the courtroom scene and back
   - [] Define an Actor
-  - [] Define locations A, B
-  - [] Have the Actor move from A to B at the press of a button
+  - [] Define the heirarchy of spaces, put some in the courtroom, and put actors in the spaces
+  - [] Define an Actor controlled by the player
+  - [] Player Actor can receive messages from the space (pubsub system w/ limited propogation)
+  - [] Spaces publish messages up the heirarchy by default
+  - [] Messages have classes, "Spoken", "Whispered", "Passed"
+  - [] Script a hello world message from the Actor to the Player
   - [] Develop a data format for defining title scenes
   - [] Extend data format for defining tile scenes
